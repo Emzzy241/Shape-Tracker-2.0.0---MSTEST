@@ -1,0 +1,35 @@
+<!-- The project file for our Shape Tracker Tests; this file will contain package references to MSTests standard configuration, as well as a reference to our production code
+ -->
+
+ <Project Sdk="Microsoft.NET.Sdk">
+    <ProprtyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </ProprtyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2"></PackageReference>
+        <PackageReference Include="MSTest.TestAdapter" Version="2.2.10"></PackageReference>
+        <PackageReference Include="MSTest.TestFramework" Version="2.2.10"></PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ShapeTracker\ShapeTracker.csproj" />
+    </ItemGroup>
+
+
+
+ </Project>
+
+ <!-- Here is all what we did:
+ 1.We use the Same Sdk as in our Production project("Microsoft.NET.Sdk")
+ 2. We list the target framework configuration(net6.0), but not the output type(<OutputType>Exe</OutputType>). That's because our test directory doesn't have a User Interface(UI) and we won't be running this project with dotnet run.... We only include an output type when we have a UI to run.
+ In addition to 2. remmeber when we said doing: <OutputType>Exe</OutputType> ...... Means we want to bild out an executable file(.exe and that will be our UI); well here we did not use it and thats because we are testing and we don't need any UI
+ 3. In the <ItemGroup> area, we import three packages, each in <PackageReference> tags:
+ ==> "Microsoft.NET.Test.Sdk" imports functionality to set up andbuild our testing environment
+ ==> "MSTest.TestAdapter" will run our tests for us
+ ==> "MSTest.TestFramework" ==> allows us to create test classes and methods and to use other built-in code to construct tests
+ 
+ In the second <ItemGroup> element, our test project references our main production project. This allows our tests to locate and use the namespace of our prouduction project without interfering with it
+
+NOTE: You ca use all of the above code as boilerplate in the testing directory's project file for all future projects, except for the project reference value, which you will need to update  
+  -->
